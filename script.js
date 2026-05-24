@@ -141,7 +141,8 @@ const hiddenColumns = {
   meaning: false
 };
 
-const checkedItems = {};
+const checkedItems =
+  JSON.parse(localStorage.getItem("checkedItems")) || {};
 
 let showCheckedOnly = false;
 
@@ -201,7 +202,14 @@ function renderTable(list = verbs) {
           <input
             type="checkbox"
             ${checkedItems[v.base] ? "checked" : ""}
-            onchange="checkedItems['${v.base}'] = this.checked"
+            onchange="
+              checkedItems['${v.base}'] = this.checked;
+
+              localStorage.setItem(
+                'checkedItems',
+                JSON.stringify(checkedItems)
+              );
+            "
           >
 
         </td>
