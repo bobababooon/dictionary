@@ -62,22 +62,19 @@
       transform: scale(0.97);
     }
 
-    .table-wrapper {
-      overflow-x: auto;
-    }
-
     table {
       width: 100%;
       border-collapse: collapse;
-      min-width: 600px;
       background: white;
+      table-layout: fixed;
     }
 
     th, td {
       border: 1px solid #ddd;
-      padding: 12px 8px;
+      padding: 6px 2px;
       text-align: center;
-      font-size: 15px;
+      font-size: 11px;
+      word-break: break-word;
     }
 
     th {
@@ -91,52 +88,71 @@
     }
 
     @media (max-width: 600px) {
+
       h1 {
-        font-size: 20px;
+        font-size: 18px;
+      }
+
+      #search {
+        font-size: 14px;
+        padding: 10px;
       }
 
       th, td {
-        font-size: 14px;
-        padding: 10px 6px;
+        font-size: 10px;
+        padding: 5px 1px;
       }
 
       .buttons button {
-        font-size: 14px;
-        padding: 12px;
+        font-size: 12px;
+        padding: 10px 4px;
       }
     }
   </style>
 </head>
+
 <body>
 
   <div class="container">
+
     <h1>不規則動詞辞書</h1>
 
     <input type="text" id="search" placeholder="検索...">
 
     <div class="buttons">
-      <button onclick="toggleColumn('base')">原形</button>
-      <button onclick="toggleColumn('past')">過去形</button>
-      <button onclick="toggleColumn('pp')">過去分詞</button>
-      <button onclick="toggleColumn('meaning')">意味</button>
+      <button onclick="toggleColumn('base')">
+        原形
+      </button>
+
+      <button onclick="toggleColumn('past')">
+        過去形
+      </button>
+
+      <button onclick="toggleColumn('pp')">
+        過去分詞
+      </button>
+
+      <button onclick="toggleColumn('meaning')">
+        意味
+      </button>
     </div>
 
-    <div class="table-wrapper">
-      <table>
-        <thead>
-          <tr>
-            <th>原形</th>
-            <th>過去形</th>
-            <th>過去分詞</th>
-            <th>意味</th>
-          </tr>
-        </thead>
+    <table>
+      <thead>
+        <tr>
+          <th>原形</th>
+          <th>過去形</th>
+          <th>過去分詞</th>
+          <th>意味</th>
+        </tr>
+      </thead>
 
-        <tbody id="verbTable"></tbody>
-      </table>
-    </div>
+      <tbody id="verbTable"></tbody>
+    </table>
+
   </div>
 
   <script src="script.js"></script>
+
 </body>
 </html>
