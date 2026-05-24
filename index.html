@@ -6,6 +6,7 @@
   <title>不規則動詞辞書</title>
 
   <style>
+
     * {
       box-sizing: border-box;
     }
@@ -108,6 +109,7 @@
         padding: 10px 4px;
       }
     }
+
   </style>
 </head>
 
@@ -121,35 +123,42 @@
 
     <div class="buttons">
 
-  <button onclick="toggleColumn('meaning')">
-    意味
-  </button>
+      <button onclick="toggleColumn('meaning')">
+        意味
+      </button>
 
-  <button onclick="toggleColumn('base')">
-    原形
-  </button>
+      <button onclick="toggleColumn('base')">
+        原形
+      </button>
 
-  <button onclick="toggleColumn('past')">
-    過去形
-  </button>
+      <button onclick="toggleColumn('past')">
+        過去形
+      </button>
 
-  <button onclick="toggleColumn('pp')">
-    過去分詞
-  </button>
+      <button onclick="toggleColumn('pp')">
+        過去分詞
+      </button>
 
-</div>
+      <button onclick="toggleCheckedOnly()">
+        ☑のみ
+      </button>
+
+    </div>
 
     <table>
+
       <thead>
         <tr>
-         <th>意味</th>
-         <th>原形</th>
-         <th>過去形</th>
-         <th>過去分詞</th>
+          <th>✓</th>
+          <th>意味</th>
+          <th>原形</th>
+          <th>過去形</th>
+          <th>過去分詞</th>
         </tr>
       </thead>
 
       <tbody id="verbTable"></tbody>
+
     </table>
 
   </div>
