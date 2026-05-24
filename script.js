@@ -171,10 +171,10 @@ function renderTable(list = verbs) {
   list.forEach(v => {
     table.innerHTML += `
       <tr>
-       <td>${hiddenColumns.meaning ? "" : v.meaning}</td>
-       <td>${hiddenColumns.base ? "" : v.base}</td>
-       <td>${hiddenColumns.past ? "" : v.past}</td>
-       <td>${hiddenColumns.pp ? "" : v.pp}</td>
+        <td>${hiddenColumns.meaning ? "" : v.meaning}</td>
+        <td>${hiddenColumns.base ? "" : v.base}</td>
+        <td>${hiddenColumns.past ? "" : v.past}</td>
+        <td>${hiddenColumns.pp ? "" : v.pp}</td>
       </tr>
     `;
   });
