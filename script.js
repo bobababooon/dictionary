@@ -141,41 +141,89 @@ const hiddenColumns = {
   meaning: false
 };
 
+const checkedItems = {};
+
+let showCheckedOnly = false;
+
 const search = document.getElementById("search");
 
 let filteredVerbs = verbs;
 
 function toggleColumn(column) {
+
   hiddenColumns[column] = !hiddenColumns[column];
+
+  renderTable(filteredVerbs);
+}
+
+function toggleCheckedOnly() {
+
+  showCheckedOnly = !showCheckedOnly;
+
   renderTable(filteredVerbs);
 }
 
 search.addEventListener("input", () => {
+
   const value = search.value.toLowerCase();
 
   filteredVerbs = verbs.filter(v =>
+
     v.base.toLowerCase().includes(value) ||
     v.past.toLowerCase().includes(value) ||
     v.pp.toLowerCase().includes(value) ||
     v.meaning.includes(value)
+
   );
 
   renderTable(filteredVerbs);
+
 });
 
 function renderTable(list = verbs) {
+
   const table = document.getElementById("verbTable");
 
   table.innerHTML = "";
 
-  list.forEach(v => {
+  const displayList = showCheckedOnly
+    ? list.filter(v => checkedItems[v.base])
+    : list;
+
+  displayList.forEach(v => {
+
     table.innerHTML += `
+
       <tr>
-        <td>${hiddenColumns.meaning ? "" : v.meaning}</td>
-        <td>${hiddenColumns.base ? "" : v.base}</td>
-        <td>${hiddenColumns.past ? "" : v.past}</td>
-        <td>${hiddenColumns.pp ? "" : v.pp}</td>
+
+        <td>
+
+          <input
+            type="checkbox"
+            ${checkedItems[v.base] ? "checked" : ""}
+            onchange="checkedItems['${v.base}'] = this.checked"
+          >
+
+        </td>
+
+        <td>
+          ${hiddenColumns.meaning ? "" : v.meaning}
+        </td>
+
+        <td>
+          ${hiddenColumns.base ? "" : v.base}
+        </td>
+
+        <td>
+          ${hiddenColumns.past ? "" : v.past}
+        </td>
+
+        <td>
+          ${hiddenColumns.pp ? "" : v.pp}
+        </td>
+
       </tr>
+
     `;
   });
 }
